@@ -31,23 +31,23 @@ def solve(bo):
 
 
 def valid(bo, num, pos):
-    #check row
+    # check row
     for i in range(len(bo[0])):
         if bo[pos[0]][i] == num and pos[1] != i:
             return False
-    #check col
+    # check col
     for i in range(len(bo)):
         if bo[i][pos[1]] == num and pos[0] != i:
             return False
-    #check box
+    # check box
     box_x = pos[1] // 3
     box_y = pos[0] // 3
 
     for i in range(box_y * 3, box_y*3 + 3):
-        for j in range(box_x * 3, box_x * 3 + 3):
+        for j in range(box_x * 3, box_x*3 + 3):
             if bo[i][j] == num and (i, j) != pos:
                 return False
-
+    return True
 
 def print_board(bo):
     for i in range(len(bo)):
@@ -71,3 +71,10 @@ def find_empty(bo):
                 return (i, j)  # row, col
 
     return None
+
+
+
+print_board(board)
+print("***************************")
+solve(board)
+print_board(board)
